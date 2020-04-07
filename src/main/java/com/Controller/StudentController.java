@@ -1,7 +1,7 @@
-package com.Marcos.Controller;
+package com.Controller;
 
-import com.Marcos.Entity.Student;
-import com.Marcos.Service.StudentService;
+import com.Entity.Student;
+import com.Service.StudentService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.*;

@@ -1,8 +1,9 @@
-package com.Marcos.Service;
+package com.Service;
 
 
-import com.Marcos.Dao.RestRepository;
-import com.Marcos.Entity.Student;
+import com.Dao.RestRepository;
+import com.Entity.Student;
+import com.Utilities.StringUtilities;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
@@ -21,7 +22,6 @@ public class StudentService {
     }
 
     public Optional<Student> getStudentById(int id) {
-        // aca puede ir logica de que si encuentra el estudiante lo devuelva sino devuelve un http error o algo asi
         return this.studentDao.findById(id);
     }
 
@@ -31,17 +31,20 @@ public class StudentService {
     }
 
     public void insertAndUpdateStudent(Student student) {
-        Optional<Student> s = studentDao.findById(student.getId());
-        if (s.isPresent()) {
-            if (student.getName() != null && !student.getName().isEmpty()) {
-                s.get().setName(student.getName());
+        Optional<Student> stu = studentDao.findById(student.getId());
+        if (stu.isPresent()) {
+            if (student.studentAttrAreCorrect()) {
+                stu.get().setName(student.getName());
+                stu.get().setCourse(student.getCourse());
+                this.studentDao.save(stu.get());
+            } else {
+
             }
-            if (student.getCourse() != null && !student.getCourse().isEmpty()) {
-                s.get().setCourse(student.getCourse());
-            }
-            this.studentDao.save(s.get());
         } else {
-            this.studentDao.save(student);
+            if (student.studentAttrAreCorrect()) {
+                this.studentDao.save(student);
+            }
         }
     }
+
 }

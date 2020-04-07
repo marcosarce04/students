@@ -1,6 +1,6 @@
-package com.Marcos.Dao;
+package com.Dao;
 
-import com.Marcos.Entity.Student;
+import com.Entity.Student;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.data.rest.core.annotation.RepositoryRestResource;

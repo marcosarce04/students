@@ -1,9 +1,11 @@
-package com.Marcos.Entity;
+package com.Entity;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+
+import static com.Utilities.StringUtilities.stringIsNotNullOrEmpty;
 
 @Entity
 public class Student {
@@ -45,5 +47,9 @@ public class Student {
 
     public void setCourse(String course) {
         this.course = course;
+    }
+
+    public boolean studentAttrAreCorrect() {
+        return (stringIsNotNullOrEmpty(this.getName()) && stringIsNotNullOrEmpty(this.getCourse()));
     }
 }

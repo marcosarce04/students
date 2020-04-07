@@ -1,6 +1,6 @@
-package com.Marcos.Dao;
+package com.Dao;
 
-import com.Marcos.Entity.Student;
+import com.Entity.Student;
 
 import java.util.Collection;
 
