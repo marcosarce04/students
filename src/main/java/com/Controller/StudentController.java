@@ -16,22 +16,22 @@ public class StudentController {
     @Autowired
     private StudentService studentService;
 
-    @RequestMapping(method = RequestMethod.GET)
+    @GetMapping
     public Iterable<Student> getAllStudents() {
         return studentService.getAllStudents();
     }
 
-    @RequestMapping(value = "/{id}", method = RequestMethod.GET)
+    @GetMapping(value = "/{id}")
     public Optional<Student> getStudentById(@PathVariable("id") int id) {
         return studentService.getStudentById(id);
     }
 
-    @RequestMapping(value = "/{id}", method = RequestMethod.DELETE)
+    @DeleteMapping(value = "/{id}")
     public void deleteStudentById(@PathVariable("id") int id) {
         this.studentService.removeStudentById(id);
     }
 
-    @RequestMapping(method = RequestMethod.PUT, consumes = MediaType.APPLICATION_JSON_VALUE)
+    @PutMapping(consumes = MediaType.APPLICATION_JSON_VALUE)
     public void insertAndUpdateStudent(@RequestBody Student student) {
         this.studentService.insertAndUpdateStudent(student);
     }
